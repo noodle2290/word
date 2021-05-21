@@ -14,20 +14,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apple = Word(R.drawable.apple_icon,"りんご")
-        val banana = Word(R.drawable.banana_icon,"バナナ")
-        val orange = Word(R.drawable.orange_icon,"オレンジ")
-        val strawberry = Word(R.drawable.strawberry_icon,"いちご")
+        val fruit = arrayOf(Word(R.drawable.apple_icon,"りんご","apple"),
+                            Word(R.drawable.banana_icon,"バナナ","banana"),
+                            Word(R.drawable.orange_icon,"オレンジ","orange"),
+                            Word(R.drawable.strawberry_icon,"いちご","strawberry")
+        )
 
-        addWord(apple)
-        addWord(banana)
-        addWord(orange)
-        addWord(strawberry)
+        for (i in 0..3)
+        addWord(fruit[i])
     }
 
     private fun addWord(word:Word){
         val nameTextView = TextView(this)
         nameTextView.text = word.name
+
+        val nameTextView2 = TextView(this)
+        nameTextView2.text = word.english
 
         val layout = LinearLayout(this)
         layout.orientation = LinearLayout.HORIZONTAL
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         layout.addView(imageView)
         layout.addView(nameTextView)
+        layout.addView(nameTextView2)
 
         container.addView(layout)
     }
